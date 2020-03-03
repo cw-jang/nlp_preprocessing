@@ -27,14 +27,14 @@ mecab -O wakati --input-buffer-size=30000 < ted.aligned.ko.refined.txt | python 
 #cat news.aligned.ko.refined.tok.txt ted.aligned.ko.refined.tok.txt > aligned.ko.refined.tok.txt
 
 # learn subword model
-cat news.aligned.en.refined.tok.txt news.aligned.ko.refined.tok.txt ted.aligned.en.refined.tok.txt ted.aligned.ko.refined.tok.txt | python ~/Workspace/nlp/subword-nmt/learn_bpe.py -s 32000 > ./bpe.model
+cat news.aligned.en.refined.tok.txt news.aligned.ko.refined.tok.txt ted.aligned.en.refined.tok.txt ted.aligned.ko.refined.tok.txt | python /root/nlp/subword-nmt/learn_bpe.py -s 32000 > ./bpe.model
 
 # apply subword segmentation
-python ~/Workspace/nlp/subword-nmt/apply_bpe.py -c ./bpe.model < news.aligned.en.refined.tok.txt > news.aligned.en.refined.tok.bpe.txt
-python ~/Workspace/nlp/subword-nmt/apply_bpe.py -c ./bpe.model < news.aligned.ko.refined.tok.txt > news.aligned.ko.refined.tok.bpe.txt
+python /root/nlp/subword-nmt/apply_bpe.py -c ./bpe.model < news.aligned.en.refined.tok.txt > news.aligned.en.refined.tok.bpe.txt
+python /root/nlp/subword-nmt/apply_bpe.py -c ./bpe.model < news.aligned.ko.refined.tok.txt > news.aligned.ko.refined.tok.bpe.txt
 
-python ~/Workspace/nlp/subword-nmt/apply_bpe.py -c ./bpe.model < ted.aligned.en.refined.tok.txt > ted.aligned.en.refined.tok.bpe.txt
-python ~/Workspace/nlp/subword-nmt/apply_bpe.py -c ./bpe.model < ted.aligned.ko.refined.tok.txt > ted.aligned.ko.refined.tok.bpe.txt
+python /root/nlp/subword-nmt/apply_bpe.py -c ./bpe.model < ted.aligned.en.refined.tok.txt > ted.aligned.en.refined.tok.bpe.txt
+python /root/nlp/subword-nmt/apply_bpe.py -c ./bpe.model < ted.aligned.ko.refined.tok.txt > ted.aligned.ko.refined.tok.bpe.txt
 
 # detoknization
 python ../detokenizer.py < news.aligned.en.refined.tok.bpe.txt > news.aligned.en.refined.tok.bpe.detok.txt
