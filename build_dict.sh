@@ -33,8 +33,8 @@ cat ./news.en.refined.sep.tok.txt ted.en.refined.sep.tok.txt > en.tok.txt
 cat ./news.ko.refined.sep.tok.txt ted.ko.refined.sep.tok.txt > ko.tok.txt
 
 # get word embedding vectors based on corpus for each language
-/opt/fastText/fasttext skipgram -input ko.tok.txt -output ko.tok -dim 256 -epoch 100 -minCount 5
-/opt/fastText/fasttext skipgram -input en.tok.txt -output en.tok -dim 256 -epoch 100 -minCount 5
+/opt/fasttext/fasttext skipgram -input ko.tok.txt -output ko.tok -dim 256 -epoch 100 -minCount 5
+/opt/fasttext/fasttext skipgram -input en.tok.txt -output en.tok -dim 256 -epoch 100 -minCount 5
 
 # get modified word vectors for each language
 rm -rf /root/MUSE/dumped/debug/*
