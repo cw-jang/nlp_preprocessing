@@ -37,9 +37,9 @@ cat ./news.ko.refined.sep.tok.txt ted.ko.refined.sep.tok.txt > ko.tok.txt
 /opt/fastText/fasttext skipgram -input en.tok.txt -output en.tok -dim 256 -epoch 100 -minCount 5
 
 # get modified word vectors for each language
-rm -rf /opt/MUSE/dumped/debug/*
-time python /opt/MUSE/supervised.py --src_lang en --tgt_lang ko --src_emb ./en.tok.vec --tgt_emb ./ko.tok.vec --n_refinement 5 --cuda False --emb_dim 256 --dico_train default
-cp -f /opt/MUSE/dumped/debug/*/vectors-*.txt ./
+rm -rf /root/MUSE/dumped/debug/*
+time python /root/MUSE/supervised.py --src_lang en --tgt_lang ko --src_emb ./en.tok.vec --tgt_emb ./ko.tok.vec --n_refinement 5 --cuda False --emb_dim 256 --dico_train default
+cp -f /root/MUSE/dumped/debug/*/vectors-*.txt ./
 
 # build word translation dictionary based on modified word vectors using cosine similarity
 python ../word_mt.py -src vectors-en.txt -tgt vectors-ko.txt -dict enko.auto.dict -k 3 -thres .4
